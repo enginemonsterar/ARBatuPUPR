@@ -199,21 +199,25 @@ public class ImageTargetController : MonoBehaviour
     public void OnLost()
     {
         Debug.Log("[EasyAR] OnLost targtet name: " + target.name());
-        gameObject.SetActive(false);
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(false);
-        }
+        int id = transform.GetSiblingIndex();
+        // GameController.Instance.OnLost(id);
+        // gameObject.SetActive(false);
+        // for (int i = 0; i < transform.childCount; i++)
+        // {
+        //     transform.GetChild(i).gameObject.SetActive(false);
+        // }
     }
 
     public void OnFound()
     {
         Debug.Log("[EasyAR] OnFound targtet name: " + target.name());
-        gameObject.SetActive(true);
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(true);
-        }
+        int id = transform.GetSiblingIndex();
+        GameController.Instance.OnTracking(id);
+        // gameObject.SetActive(true);
+        // for (int i = 0; i < transform.childCount; i++)
+        // {
+        //     transform.GetChild(i).gameObject.SetActive(true);
+        // }
     }
 
     private void OnDestroy()
